@@ -48,8 +48,8 @@ void setup() {
   Serial.println(ssid);
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
+  Ready();
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
-  Firebase.setString("IoT/L5", "A");
   SPI.begin();
   mfrc522.PCD_Init();
 }
@@ -284,4 +284,25 @@ void buzzer()
   tone(16, 100, 300);
   delay(300);
   tone(16, 1000, 300);
+}
+
+void Ready()
+{
+  #define NOTE_C4  262
+  #define NOTE_G3  196
+  #define NOTE_A3  220
+  #define NOTE_B3  247  
+  int noteDurations[] = {4, 8, 8, 4, 4, 4, 4, 4};
+  int melody[] = {NOTE_C4, NOTE_G3, NOTE_G3, NOTE_A3, NOTE_G3, 0, NOTE_B3, NOTE_C4};
+
+  for (int thisNote = 0; thisNote < 8; thisNote++) 
+  {
+    int noteDuration = 1000 / noteDurations[thisNote];
+    tone(16, melody[thisNote], noteDuration);
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(8);
+  }
+  digitalWrite(SUCCESS_PIN, HIGH);
+  digitalWrite(ERROR_PIN, LOW);
 }
