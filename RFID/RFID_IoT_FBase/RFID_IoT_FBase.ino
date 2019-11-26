@@ -1,4 +1,4 @@
-#include <SPI.h>
+//#include <SPI.h>
 #include <MFRC522.h>
 #include <FirebaseArduino.h> //Memasukan Lib Firebase (Basis Arduino)
 #include <ESP8266WiFi.h>
@@ -11,7 +11,8 @@
 #define SUCCESS_PIN 5
 #define CONN_PIN 5
 
-int A, B, C, D, E, F, G, H, I;
+int A, B, C, D, E, F, G, H, I, J; //UID Variabel
+int S1, S2, S3, S4, S5, S6, S7, S8, S9, S0; //Variabel State Pengguna
 
 #define FIREBASE_HOST "kanggara101.firebaseio.com" //Database Config
 #define FIREBASE_AUTH "Clw7sePLvWSbAP4oH7dt2FAVWouWnPEhdglbc9JA"
@@ -62,15 +63,26 @@ void firebasereconnect()
 void(* resetFunc) (void) = 0;
 
 void AmbilData(int code){
-  A = Firebase.getString("IoT/RFID/0").toInt(); //membaca nilai yang ada pada L1
-  B = Firebase.getString("IoT/RFID/1").toInt(); //membaca nilai yang ada pada L1
-  C = Firebase.getString("IoT/RFID/2").toInt(); //membaca nilai yang ada pada L1
-  D = Firebase.getString("IoT/RFID/3").toInt(); //membaca nilai yang ada pada L1
-  E = Firebase.getString("IoT/RFID/4").toInt(); //membaca nilai yang ada pada L1
-  F = Firebase.getString("IoT/RFID/5").toInt(); //membaca nilai yang ada pada L1
-  G = Firebase.getString("IoT/RFID/6").toInt(); //membaca nilai yang ada pada L1
-  H = Firebase.getString("IoT/RFID/7").toInt(); //membaca nilai yang ada pada L1
-  I = Firebase.getString("IoT/RFID/8").toInt(); //membaca nilai yang ada pada L1
+  A = Firebase.getString("RFID/UID/0").toInt(); //membaca nilai yang ada pada L1
+  B = Firebase.getString("RFID/UID/1").toInt(); //membaca nilai yang ada pada L1
+  C = Firebase.getString("RFID/UID/2").toInt(); //membaca nilai yang ada pada L1
+  D = Firebase.getString("RFID/UID/3").toInt(); //membaca nilai yang ada pada L1
+  E = Firebase.getString("RFID/UID/4").toInt(); //membaca nilai yang ada pada L1
+  F = Firebase.getString("RFID/UID/5").toInt(); //membaca nilai yang ada pada L1
+  G = Firebase.getString("RFID/UID/6").toInt(); //membaca nilai yang ada pada L1
+  H = Firebase.getString("RFID/UID/7").toInt(); //membaca nilai yang ada pada L1
+  I = Firebase.getString("RFID/UID/8").toInt(); //membaca nilai yang ada pada L1
+  J = Firebase.getString("RFID/UID/9").toInt(); //membaca nilai yang ada pada L1
+  S1 = Firebase.getString("RFID/UID/1").toInt(); //membaca nilai yang ada pada L1
+  S2 = Firebase.getString("RFID/UID/2").toInt(); //membaca nilai yang ada pada L1
+  S3 = Firebase.getString("RFID/UID/3").toInt(); //membaca nilai yang ada pada L1
+  S4 = Firebase.getString("RFID/UID/4").toInt(); //membaca nilai yang ada pada L1
+  S5 = Firebase.getString("RFID/UID/5").toInt(); //membaca nilai yang ada pada L1
+  S6 = Firebase.getString("RFID/UID/6").toInt(); //membaca nilai yang ada pada L1
+  S7 = Firebase.getString("RFID/UID/7").toInt(); //membaca nilai yang ada pada L1
+  S8 = Firebase.getString("RFID/UID/8").toInt(); //membaca nilai yang ada pada L1
+  S9 = Firebase.getString("RFID/UID/9").toInt(); //membaca nilai yang ada pada L1
+  
   
   if (code == A)
   {
