@@ -12,7 +12,7 @@
 #define CONN_PIN 5
 
 int A, B, C, D, E, F, G, H, I, J; //UID Variabel
-int S1, S2, S3, S4, S5, S6, S7, S8, S9, S0; //Variabel State Pengguna
+int Q, R, S, T, U, V, W, X, Y, Z; //Variabel State Pengguna
 
 #define FIREBASE_HOST "kanggara101.firebaseio.com" //Database Config
 #define FIREBASE_AUTH "Clw7sePLvWSbAP4oH7dt2FAVWouWnPEhdglbc9JA"
@@ -63,62 +63,146 @@ void firebasereconnect()
 void(* resetFunc) (void) = 0;
 
 void AmbilData(int code){
-  A = Firebase.getString("RFID/UID/0").toInt(); //membaca nilai yang ada pada L1
-  B = Firebase.getString("RFID/UID/1").toInt(); //membaca nilai yang ada pada L1
-  C = Firebase.getString("RFID/UID/2").toInt(); //membaca nilai yang ada pada L1
-  D = Firebase.getString("RFID/UID/3").toInt(); //membaca nilai yang ada pada L1
-  E = Firebase.getString("RFID/UID/4").toInt(); //membaca nilai yang ada pada L1
-  F = Firebase.getString("RFID/UID/5").toInt(); //membaca nilai yang ada pada L1
-  G = Firebase.getString("RFID/UID/6").toInt(); //membaca nilai yang ada pada L1
-  H = Firebase.getString("RFID/UID/7").toInt(); //membaca nilai yang ada pada L1
-  I = Firebase.getString("RFID/UID/8").toInt(); //membaca nilai yang ada pada L1
-  J = Firebase.getString("RFID/UID/9").toInt(); //membaca nilai yang ada pada L1
-  S1 = Firebase.getString("RFID/UID/1").toInt(); //membaca nilai yang ada pada L1
-  S2 = Firebase.getString("RFID/UID/2").toInt(); //membaca nilai yang ada pada L1
-  S3 = Firebase.getString("RFID/UID/3").toInt(); //membaca nilai yang ada pada L1
-  S4 = Firebase.getString("RFID/UID/4").toInt(); //membaca nilai yang ada pada L1
-  S5 = Firebase.getString("RFID/UID/5").toInt(); //membaca nilai yang ada pada L1
-  S6 = Firebase.getString("RFID/UID/6").toInt(); //membaca nilai yang ada pada L1
-  S7 = Firebase.getString("RFID/UID/7").toInt(); //membaca nilai yang ada pada L1
-  S8 = Firebase.getString("RFID/UID/8").toInt(); //membaca nilai yang ada pada L1
-  S9 = Firebase.getString("RFID/UID/9").toInt(); //membaca nilai yang ada pada L1
+  A = Firebase.getString("RFID/UID/0").toInt(); //membaca nilai yang ada pada UID/0
+  B = Firebase.getString("RFID/UID/1").toInt(); //membaca nilai yang ada pada UID/1
+  C = Firebase.getString("RFID/UID/2").toInt(); //membaca nilai yang ada pada UID/2
+  D = Firebase.getString("RFID/UID/3").toInt(); //membaca nilai yang ada pada UID/3
+  E = Firebase.getString("RFID/UID/4").toInt(); //membaca nilai yang ada pada UID/4
+  F = Firebase.getString("RFID/UID/5").toInt(); //membaca nilai yang ada pada UID/5
+  G = Firebase.getString("RFID/UID/6").toInt(); //membaca nilai yang ada pada UID/6
+  H = Firebase.getString("RFID/UID/7").toInt(); //membaca nilai yang ada pada UID/7
+  I = Firebase.getString("RFID/UID/8").toInt(); //membaca nilai yang ada pada UID/8
+  J = Firebase.getString("RFID/UID/9").toInt(); //membaca nilai yang ada pada UID/9
+  Q = Firebase.getString("RFID/S/0").toInt(); //membaca nilai State pada S/0
+  R = Firebase.getString("RFID/S/1").toInt(); //membaca nilai State pada S/1
+  S = Firebase.getString("RFID/S/2").toInt(); //membaca nilai State pada S/2
+  T = Firebase.getString("RFID/S/3").toInt(); //membaca nilai State pada S/3
+  U = Firebase.getString("RFID/S/4").toInt(); //membaca nilai State pada S/4
+  V = Firebase.getString("RFID/S/5").toInt(); //membaca nilai State pada S/5
+  W = Firebase.getString("RFID/S/6").toInt(); //membaca nilai State pada S/6
+  X = Firebase.getString("RFID/S/7").toInt(); //membaca nilai State pada S/7
+  Y = Firebase.getString("RFID/S/8").toInt(); //membaca nilai State pada S/8
+  Z = Firebase.getString("RFID/S/9").toInt(); //membaca nilai State pada S/9
   
-  
-  if (code == A)
+       if (code == A && Q == 0 )
   {
     berhasil();
+    Serial.println("Pengguna A Memasuki Wilayah");
+    Firebase.setString("RFID/S/0", "1");
   }
-  else if (code == B)
+  else if (code == A && Q == 1 )
   {
     berhasil();
+    Serial.println("Pengguna A Keluar Wilayah");
+    Firebase.setString("RFID/S/0", "0");
   }
-  else if (code == C)
+  else if (code == B && R == 0 )
   {
     berhasil();
+    Serial.println("Pengguna B Memasuki Wilayah");
+    Firebase.setString("RFID/S/1", "1");
   }
-  else if (code == D)
+  else if (code == B && R == 1 )
   {
     berhasil();
+    Serial.println("Pengguna B Keluar Wilayah");
+    Firebase.setString("RFID/S/1", "0");
   }
-  else if (code == E)
+  else if (code == C && S == 0 )
   {
     berhasil();
+    Serial.println("Pengguna C Memasuki Wilayah");
+    Firebase.setString("RFID/S/2", "1");
   }
-  else if (code == F)
+  else if (code == C && S == 1 )
   {
     berhasil();
+    Serial.println("Pengguna C Keluar Wilayah");
+    Firebase.setString("RFID/S/2", "0");
   }
-  else if (code == G)
+  else if (code == D && T == 0 )
   {
     berhasil();
+    Serial.println("Pengguna D Memasuki Wilayah");
+    Firebase.setString("RFID/S/3", "1");
   }
-  else if (code == H)
+  else if (code == D && T == 1 )
   {
     berhasil();
+    Serial.println("Pengguna D Keluar Wilayah");
+    Firebase.setString("RFID/S/3", "0");
   }
-  else if (code == I)
+  else if (code == E && U == 0 )
   {
     berhasil();
+    Serial.println("Pengguna E Memasuki Wilayah");
+    Firebase.setString("RFID/S/4", "1");
+  }
+  else if (code == E && U == 1 )
+  {
+    berhasil();
+    Serial.println("Pengguna E Keluar Wilayah");
+    Firebase.setString("RFID/S/4", "0");
+  }
+  else if (code == F && V == 0 )
+  {
+    berhasil();
+    Serial.println("Pengguna F Memasuki Wilayah");
+    Firebase.setString("RFID/S/5", "1");
+  }
+  else if (code == F && V == 1 )
+  {
+    berhasil();
+    Serial.println("Pengguna F Keluar Wilayah");
+    Firebase.setString("RFID/S/5", "0");
+  }
+  else if (code == G && W == 0 )
+  {
+    berhasil();
+    Serial.println("Pengguna G Memasuki Wilayah");
+    Firebase.setString("RFID/S/6", "1");
+  }
+  else if (code == G && W == 1 )
+  {
+    berhasil();
+    Serial.println("Pengguna G Keluar Wilayah");
+    Firebase.setString("RFID/S/6", "0");
+  }
+  else if (code == H && X == 0 )
+  {
+    berhasil();
+    Serial.println("Pengguna H Memasuki Wilayah");
+    Firebase.setString("RFID/S/7", "1");
+  }
+  else if (code == H && X == 1 )
+  {
+    berhasil();
+    Serial.println("Pengguna H Keluar Wilayah");
+    Firebase.setString("RFID/S/7", "0");
+  }
+  else if (code == I && Y == 0 )
+  {
+    berhasil();
+    Serial.println("Pengguna I Memasuki Wilayah");
+    Firebase.setString("RFID/S/8", "1");
+  }
+  else if (code == I && Y == 1 )
+  {
+    berhasil();
+    Serial.println("Pengguna I Keluar Wilayah");
+    Firebase.setString("RFID/S/8", "0");
+  }
+  else if (code == J && Z == 0 )
+  {
+    berhasil();
+    Serial.println("Pengguna J Memasuki Wilayah");
+    Firebase.setString("RFID/S/9", "1");
+  }
+  else if (code == J && Z == 1 )
+  {
+    berhasil();
+    Serial.println("Pengguna J Keluar Wilayah");
+    Firebase.setString("RFID/S/9", "0");
   }
   else
   {
