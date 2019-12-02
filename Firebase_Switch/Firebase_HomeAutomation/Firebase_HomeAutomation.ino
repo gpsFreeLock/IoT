@@ -16,22 +16,18 @@ int val4;
 
 void setup()
 {
+  resetFunc();
   Serial.begin(115200); //Baud Rate untuk Serial Monitor
   pinMode(Relay1, OUTPUT);
   pinMode(Relay2, OUTPUT);
   pinMode(Relay3, OUTPUT);
   pinMode(Relay4, OUTPUT);
 
-  digitalWrite(Relay1, HIGH);
-  digitalWrite(Relay2, HIGH);
-  digitalWrite(Relay3, HIGH);
-  digitalWrite(Relay4, HIGH);
-
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("connecting");
   while (WiFi.status() != WL_CONNECTED)
   {
-    Serial.print(".");
+    Serial.print("=");
     delay(500);
   }
   Serial.println();
@@ -59,7 +55,9 @@ void loop()
   }
 
   val1 = Firebase.getString("IoT/L1").toInt(); //membaca nilai yang ada pada L1
-
+  val2 = Firebase.getString("IoT/L2").toInt(); //membaca nilai yang ada pada L2
+  val3 = Firebase.getString("IoT/L3").toInt(); //membaca nilai yang ada pada L2
+  val4 = Firebase.getString("IoT/L4").toInt(); //membaca nilai yang ada pada L2
   if (val1 == 0)
   {
     digitalWrite(Relay1, LOW);
@@ -70,10 +68,7 @@ void loop()
     digitalWrite(Relay1, HIGH);
     Serial.println("light 1 OFF");
   }
-
-  val2 = Firebase.getString("IoT/L2").toInt(); //membaca nilai yang ada pada L2
-
-  if (val2 == 0)
+  else if (val2 == 0)
   {
     digitalWrite(Relay2, LOW);
     Serial.println("light 2 ON");
@@ -83,10 +78,7 @@ void loop()
     digitalWrite(Relay2, HIGH);
     Serial.println("light 2 OFF");
   }
-
-  val3 = Firebase.getString("IoT/L3").toInt(); //membaca nilai yang ada pada L3
-
-  if (val3 == 0)
+  else  if (val3 == 0)
   {
     digitalWrite(Relay3, LOW);
     Serial.println("light 3 ON");
@@ -96,10 +88,7 @@ void loop()
     digitalWrite(Relay3, HIGH);
     Serial.println("light 3 OFF");
   }
-
-  val4 = Firebase.getString("IoT/L4").toInt(); //membaca nilai yang ada pada L4
-
-  if (val4 == 0) // Jika nilai =  Saklar Dimatikan
+  else if (val4 == 0) // Jika nilai =  Saklar Dimatikan
   {
     digitalWrite(Relay4, LOW);
     Serial.println("light 4 ON");
