@@ -17,8 +17,8 @@ int Q, R, S, T, U, V, W, X, Y, Z; //Variabel State Pengguna
 #define FIREBASE_HOST "kanggara101.firebaseio.com" //Database Config
 #define FIREBASE_AUTH "Clw7sePLvWSbAP4oH7dt2FAVWouWnPEhdglbc9JA"
 
-const char *ssid = "HiMaTe16";
-const char *password = "klapankali";
+const char *ssid = "iPhone";
+const char *password = "empatbelas";
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 Servo myservo;
