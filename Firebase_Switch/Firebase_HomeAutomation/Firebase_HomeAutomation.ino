@@ -1,9 +1,9 @@
 #include <ESP8266WiFi.h>     //Memasukan Library Untuk ESP8266
 #include <FirebaseArduino.h> //Memasukan Lib Firebase (Basis Arduino)
-#define FIREBASE_HOST "iot-saklar.firebaseio.com"
-#define FIREBASE_AUTH "lxaAkwAdObs4KspY6BPo5IIqB0ySEjqA23FW4lKt"
-#define WIFI_SSID "HiMaTe16"
-#define WIFI_PASSWORD "klapankali"
+#define FIREBASE_HOST "iot-saklar.firebaseio.com" //url Firebase
+#define FIREBASE_AUTH "lxaAkwAdObs4KspY6BPo5IIqB0ySEjqA23FW4lKt"  //Token Firebase
+#define WIFI_SSID "HiMaTe16"  //SSID Wifi
+#define WIFI_PASSWORD "klapankali"  //Password wifi
 
 #define Relay1 16 //Pin 16 NodeMcu sebgai D0 PinOut
 int val1;
@@ -36,7 +36,9 @@ void setup()
 
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
 }
+
 void(* resetFunc) (void) = 0;
+
 void firebasereconnect()
 {
   Serial.println("Trying to reconnect"); //menghubungkan kembali jika perangkat gagal terhubung ke firebase
