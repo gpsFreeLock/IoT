@@ -2,7 +2,7 @@
 #include <FirebaseArduino.h> //Memasukan Lib Firebase (Basis Arduino)
 #define FIREBASE_HOST "tugas-akhir-7d195-default-rtdb.firebaseio.com" //url Firebase
 #define FIREBASE_AUTH "WclzvEO0Yyak65pPrrb4NG12Utt8t38CPeEOBZ9J"  //Token Firebase
-#define WIFI_SSID “KAn”ggara75  //SSID Wifi
+#define WIFI_SSID “KAnggara75"  //SSID Wifi
 #define WIFI_PASSWORD "klapankali2”  //Password wifi
 
 
