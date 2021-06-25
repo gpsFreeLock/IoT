@@ -66,21 +66,21 @@ void setup()
   Serial.printf("Firebase Client v%s\n\n", FIREBASE_CLIENT_VERSION);
 
   /* Assign the api key (required) */
-  config.api_key = API_KEY;
+//  config.api_key = API_KEY;
 
   /* Assign the user sign in credentials */
-  auth.user.email = USER_EMAIL;
-  auth.user.password = USER_PASSWORD;
+//  auth.user.email = USER_EMAIL;
+//  auth.user.password = USER_PASSWORD;
 
   /* Assign the RTDB URL (required) */
-  config.database_url = DATABASE_URL;
+//  config.database_url = DATABASE_URL;
 
   /* Assign the callback function for the long running token generation task */
-  config.token_status_callback = tokenStatusCallback; //see addons/TokenHelper.h
+//  config.token_status_callback = tokenStatusCallback; //see addons/TokenHelper.h
 
   //Or use legacy authenticate method
-  //config.database_url = DATABASE_URL;
-  //config.signer.tokens.legacy_token = "<database secret>";
+  config.database_url = DATABASE_URL;
+  config.signer.tokens.legacy_token = "WclzvEO0Yyak65pPrrb4NG12Utt8t38CPeEOBZ9J";
 
   Firebase.begin(&config, &auth);
 
