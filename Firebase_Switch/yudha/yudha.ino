@@ -6,8 +6,8 @@
 #include <Firebase_ESP_Client.h>
 
 /* 1. Define the WiFi credentials */
-#define WIFI_SSID "KAnggara75"
-#define WIFI_PASSWORD "klapankali2"
+#define WIFI_SSID "AndroidAP"
+#define WIFI_PASSWORD "khansakm"
 
 #define TOKEN "WclzvEO0Yyak65pPrrb4NG12Utt8t38CPeEOBZ9J"
 
@@ -24,7 +24,9 @@ FirebaseConfig config;
 #define sensor A0 //Pin A0 untuk sensor
 String tmpget; //Temporary Data from String to Integer
 int val1;
-int cout;
+int adc;
+float cout;
+float ntu;
 
 void setup()
 {
@@ -94,14 +96,18 @@ void cek()
 
 void baca()
 {
-  cout = analogRead(sensor);
+  adc = analogRead(sensor);  // Get value of ADC (integer)
+  
+  cout = adc*1.00; //Confert to float
+  
+  ntu = (cout - 855.0)/(0.29*-1); // final NTU value  
 }
 
 void kirim()
 {
   if (Firebase.ready())
   {
-    Firebase.RTDB.setInt(&fbdo, "/DB/NTU", cout);
+    Firebase.RTDB.setFloat(&fbdo, "/DB/NTU", ntu);
   }
 }
 
@@ -117,7 +123,7 @@ void loop()
   Serial.println(val1);
 
   Serial.print("NTU : ");
-  Serial.println(cout);
+  Serial.println(ntu);
 
   delay(300);
 }
